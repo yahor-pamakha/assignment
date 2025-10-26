@@ -1,13 +1,13 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 
 export class ClientService {
   constructor(protected http: HttpClient) {}
 
   getClients() {
-    return this.http.get("http://localhost:3000/clients");
+    return this.http.get('http://localhost:3000/clients');
   }
 
-  createClient(client: any) {
-    return this.http.post("http://localhost:3000/clients/", client);
+  createClient(client: { name: string; email: string }) {
+    return this.http.post('http://localhost:3000/clients/', client);
   }
 }

@@ -1,52 +1,38 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ClientService } from "./client.service";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ClientService } from './client.service';
 
 @Component({
-  selector: "app-clients",
+  selector: 'app-clients',
   template: `
     <div class="create-client">
-    <button style="font-size: 16px" (click)="showNewClientForm = true">Create client</button>
+      <button style="font-size: 16px" (click)="showNewClientForm = true">Create client</button>
     </div>
     <div class="clients">
       <div class="new-client" *ngIf="showNewClientForm">
         <h3>Create new client</h3>
-        <input
-          type="text"
-          placeholder="First name"
-          [(ngModel)]="newClient.firstName"
-        />
-        <input
-          type="text"
-          placeholder="Last name"
-          [(ngModel)]="newClient.lastName"
-        />
-        <input
-          type="text"
-          placeholder="Birthdate"
-          [(ngModel)]="newClient.birthdate"
-        />
-        <input
-          type="text"
-          placeholder="Active state"
-          [(ngModel)]="newClient.isActive"
-        />
+        <input type="text" placeholder="First name" [(ngModel)]="newClient.firstName" />
+        <input type="text" placeholder="Last name" [(ngModel)]="newClient.lastName" />
+        <input type="text" placeholder="Birthdate" [(ngModel)]="newClient.birthdate" />
+        <input type="text" placeholder="Active state" [(ngModel)]="newClient.isActive" />
         <button (click)="createClient()">Create client</button>
       </div>
       <div class="clients-filter">
         <h3>Filter clients</h3>
         <div class="flex-wrapper">
-        <input type="text" placeholder="Filter by clients name" />
-        <div class="filter-checkbox-wrapper">
-        <input id="filterCheckbox" type="checkbox"/> 
-        <span style="padding-left: 8px"><label for="filterCheckbox">Filter by active state</label></span>
-        </div>
+          <input type="text" placeholder="Filter by clients name" />
+          <div class="filter-checkbox-wrapper">
+            <input id="filterCheckbox" type="checkbox" />
+            <span style="padding-left: 8px"
+              ><label for="filterCheckbox">Filter by active state</label></span
+            >
+          </div>
         </div>
       </div>
       <div class="client-card" *ngFor="let client of clients">
         <span>
-          {{ client.firstName }} {{ client.lastName }} -
-          {{ client.birthdate }} - {{ client.isActive }}
+          {{ client.firstName }} {{ client.lastName }} - {{ client.birthdate }} -
+          {{ client.isActive }}
         </span>
         <span>
           <a>Edit</a>
@@ -86,17 +72,17 @@ import { ClientService } from "./client.service";
         border: 1px solid #006175;
         margin-bottom: 16px;
       }
-      
+
       #filterCheckbox {
         width: 20px;
         height: 20px;
-        padding-left: 40px
+        padding-left: 40px;
       }
     `,
   ],
 })
 export class ClientsComponent {
-  showNewClientForm: boolean = false;
+  showNewClientForm = false;
   newClient: any = {};
   clients: any = [];
   clientService;

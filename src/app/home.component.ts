@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-clients",
+  selector: 'app-clients',
   template: `
     <div class="home">
       <h1>👋 Welcome to the Gerimedica Frontend Assignment</h1>
-      <h3> Need improvements in this application</h3>
+      <h3>Need improvements in this application</h3>
       <p>Go to clients tab and perform below actions</p>
       <ol>
         <li>Edit the clients</li>
@@ -14,7 +14,7 @@ import { Component } from "@angular/core";
         <li>Filter the clients by isActive checkbox</li>
         <li>Add validations and unit tests</li>
         <li>Beautify the client list</li>
-        <li>Improve wherever you can :) </li>
+        <li>Improve wherever you can :)</li>
       </ol>
     </div>
   `,
@@ -30,8 +30,9 @@ import { Component } from "@angular/core";
         text-align: center;
         font-size: 12px;
       }
-      
-      li, p {
+
+      li,
+      p {
         text-align: left;
       }
     `,
