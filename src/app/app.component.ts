@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <header class="header">
+  standalone: true,
+  imports: [RouterModule],
+  template: `<header class="header">
       <h1>
         <img src="gerimedica-logo.png" alt="gerimedica logo" />
       </h1>
@@ -12,9 +14,6 @@ import { Component } from '@angular/core';
         <a routerLink="/clients">Clients</a>
       </nav>
     </header>
-    <router-outlet />
-  `,
-  standalone: false,
-  styles: [],
+    <router-outlet /> `,
 })
 export class AppComponent {}
