@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  imports: [CommonModule, RouterOutlet, RouterModule, MatProgressSpinnerModule],
   standalone: true,
-  imports: [RouterModule],
-  template: `<header class="header">
-      <h1>
-        <img src="gerimedica-logo.png" alt="gerimedica logo" />
-      </h1>
-      <nav>
-        <a routerLink="/">Home</a>
-        <a routerLink="/clients">Clients</a>
-      </nav>
-    </header>
-    <router-outlet /> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class AppComponent {
+  loadingService = inject(LoadingService);
+}

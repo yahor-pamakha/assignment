@@ -1,0 +1,14 @@
+@if (loadingService.isLoading$ | async) {
+  <div class="global-loader-overlay"><mat-spinner diameter="60"></mat-spinner></div>
+}
+
+<header class="header">
+  <h1>
+    <img class="mx-auto" src="gerimedica-logo.png" alt="gerimedica logo" />
+  </h1>
+  <nav>
+    <a routerLink="/">Home</a>
+    <a routerLink="/clients">Clients</a>
+  </nav>
+</header>
+<router-outlet />
