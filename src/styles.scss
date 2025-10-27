@@ -1,25 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@use 'tailwindcss';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
-  padding: 0;
-  font-family: Helvetica, sans-serif;
-}
-
-input {
-  width: 250px;
-  height: 40px;
-  margin: 8px;
-}
-
-button {
-  background-color: #006175;
-  border: 1px solid #006175;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 30px;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 .header {
@@ -45,31 +33,4 @@ button {
       font-size: 18px;
     }
   }
-}
-
-.client-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  border: 1px solid #006175;
-  background-color: #f9f9f9;
-  margin-bottom: 8px;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: underline;
-  color: #006175;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
