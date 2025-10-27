@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gerimedica-frontend-assignment": {
+    "assignment": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -44,7 +44,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gerimedica-frontend-assignment",
+            "outputPath": "dist/assignment",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -92,10 +92,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gerimedica-frontend-assignment:build:production"
+              "buildTarget": "assignment:build:production"
             },
             "development": {
-              "buildTarget": "gerimedica-frontend-assignment:build:development"
+              "buildTarget": "assignment:build:development"
             }
           },
           "defaultConfiguration": "development"

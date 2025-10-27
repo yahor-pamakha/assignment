@@ -1,0 +1,51 @@
+<div class="flex flex-col">
+  <div class="border-b border-gray-200 p-6">
+    <h1 class="text-xl font-medium">
+      {{ data ? 'Update client' : 'Create new client' }}
+    </h1>
+  </div>
+
+  <div class="max-h-[70vh] overflow-y-auto p-6">
+    <p class="mb-4 text-sm text-gray-600">Please fill in the following fields</p>
+
+    <form [formGroup]="userForm" class="flex flex-col gap-4">
+      <mat-form-field class="w-full">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+
+      <mat-form-field class="w-full">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" />
+      </mat-form-field>
+
+      <mat-form-field class="w-full">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="w-full">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="isActive">
+          <mat-option [value]="true">Active</mat-option>
+          <mat-option [value]="false">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="flex justify-end gap-2 border-t border-gray-200 p-6">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSave()"
+      [disabled]="userForm.invalid || !hasChanges"
+    >
+      {{ data ? 'Update' : 'Create' }}
+    </button>
+  </div>
+</div>

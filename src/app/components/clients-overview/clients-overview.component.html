@@ -1,0 +1,81 @@
+<div class="mt-5 flex">
+  <mat-form-field class="mr-5">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Active" #input />
+  </mat-form-field>
+  <button (click)="openClientInfoModal()" class="mr-5 !h-13" color="primary" mat-raised-button>
+    Add client
+  </button>
+</div>
+<div>
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let client">{{ client.id }}</td>
+    </ng-container>
+
+    <!-- First Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+      <td mat-cell *matCellDef="let client">{{ client.firstName }}</td>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let client">{{ client.lastName }}</td>
+    </ng-container>
+
+    <!-- Birth date Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Birth Date</th>
+      <td mat-cell *matCellDef="let client">{{ client.birthDate | date }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let client">{{ client.isActive ? 'Active' : 'Inactive' }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let client">
+        <div class="flex flex-row gap-2">
+          <button
+            mat-mini-fab
+            color="primary"
+            aria-label="Edit client"
+            (click)="openClientInfoModal(client)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button
+            mat-mini-fab
+            color="warn"
+            aria-label="Delete client"
+            (click)="onDelete(client.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let client; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{ input.value }}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of clients"
+  ></mat-paginator>
+</div>
